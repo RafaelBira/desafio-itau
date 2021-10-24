@@ -68,5 +68,25 @@
 </form>
 <div>
 <strong id="alerta"></strong>
+<script>
+function validarDados(){
+var dados=[]
+dados.push(document.getElementById("id_nome").value);
+dados.push(document.getElementById("id_cpf").value);
+dados.push(document.getElementById("id_endereco").value);
+dados.push(document.getElementById("id_numero").value);
+dados.push(document.getElementById("id_celular").value);
+for (var i=0; i<dados.length; i++) {
+if(dados[i]=="") return document.getElementById("alerta").innerHTML="PREENCHA TODOS OS CAMPOS COM *";
+}
+alert("cadastro realizado com sucesso");
+}
+function verificarSexo() {
+        if(document.getElementById("id_sexo").value==="outro")
+document.getElementById("id_sexo_outro").style.display = "block";
+        else
+document.getElementById("id_sexo_outro").style.display = 'none';
+}
+</script>
 </body>
 </html>
