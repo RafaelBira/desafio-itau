@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastre-se</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cadastre-se</title>
 </head>
 <body>
 <header>
-    <h1>Formulário de cadastro</h1>
+<h1>Formulário de cadastro</h1>
 </header>
 <p><strong>Preencha todos os campos obrigatórios (*)</strong></p>
 <form method="post">
 <div>
-    <label for="id_nome">Nome *</label>
-<input type="text" name="nome" id="id_nome" required placeholder="Seu Nome Completo">
+<label for="id_nome">Nome *</label>
+<input type="text" id="id_nome" placeholder="Seu Nome Completo"required maxlength="60"/>
 </div>
 <div>
 <label for="id_cpf">CPF *</label>
@@ -22,105 +22,49 @@
 </div>
 <div>
 <label for="id_rg">RG </label>
-<input type="text" name="rg" id="id_rg" placeholder="Seu RG, somente números"/>
+<input type="text" id="id_rg" placeholder="Seu RG, somente números"/>
 </div>
 <div>
 <label for="id_sexo">Sexo </label>
-<select id="id_sexo" onchange="verificarSexo();">
-<option value="...">Selecione</option>
+<select id="id_sexo" onchange="verificarSexo()">
+<option value="">Selecione</option>
 <option value="feminino">Feminino</option>
 <option value="masculino">Masculino</option>
-<option  value="outro">Outro</option>
+<option value="outro">Outro</option>
 </select>
 <input type="text" id="id_sexo_outro" placeholder="outro" style="display: none;"/>
 </div>
 <div>
 <label for="id_endereco">Endereço *</label>
-<input type="text" name="endereco" id="id_endereco" placeholder="Seu endereço atual" required/>
+<input type="text" id="id_endereco" placeholder="Seu endereço atual" required/>
 </div>
 <div>
 <label for="id_numero">Número *</label>
-<input type="text" name="numero" id="id_numero" placeholder="Número da sua residência" required/>
+<input type="text" id="id_numero" placeholder="Número da sua residência" required/>
 </div>
 <div>
 <label for="id_cidade">Cidade </label>
-<input type="text" name="cidade" placeholder="Cidade onde você reside atualmente" id="id_cidade"/>
+<input type="text" id="id_cidade" placeholder="Cidade onde você reside atualmente"/>
 </div>
 </div>
 <div>
 <label for="id_estado">Estado </label>
-<input type="text" name="estado" id="id_estado" placeholder="Estado onde você reside atualmente" />
+<input type="text" id="id_estado" placeholder="Estado onde você reside atualmente"/>
 </div>
 <div>
-    <label for="id_cep">CEP </label>
-<input type="text" name="cep" id="id_cep" placeholder="Código postal do seu endereço"/>
+<label for="id_cep">CEP </label>
+<input type="text" id="id_cep" placeholder="Código postal do seu endereço"/>
 </div>
 <div>
 <label for="id_telefoneFixo">Telefone fixo </label>
 <input type="tel" id="id_telefoneFixo" placeholder="Telefone residencial" maxlength="13" onkeypress="verificarTelefoneFixo()"/>
 </div>
 <div>
-    <label for="id_telefoneCelular">Telefone celular *</label>
-    <input type="tel" id="id_telefoneCelular" placeholder="Número do seu celular" required maxlength="14" onkeypress="verificarTelefoneCelular()"/>
-    </div>
-    <button onclick="validarDados()" id="id_enviar">Cadastrar</button>
+<label for="id_telefoneCelular">Telefone celular *</label>
+<input type="tel" id="id_telefoneCelular" placeholder="Número do seu celular" required maxlength="14" onkeypress="verificarTelefoneCelular()"/>
+</div>
+<button onclick="validarDados()" id="id_enviar">Cadastrar</button>
 </form>
-<div>
-    <script>
-function validarDados() {
-var dados=[]
-dados.push(document.getElementById("id_nome").value);
-dados.push(document.getElementById("id_cpf").value);
-dados.push(document.getElementById("id_endereco").value);
-dados.push(document.getElementById("id_numero").value);
-dados.push(document.getElementById("id_telefoneCelular").value);
-for (var i=0; i<dados.length; i++) {
-if(dados[i]=="") return;
-}
-alert("Cadastro realizado com sucesso");
-}
-function verificarSexo() {
-if(document.getElementById("id_sexo").value=="outro") {
-document.getElementById("id_sexo_outro").style.display = "block";
-}
-else {
-document.getElementById("id_sexo_outro").style.display = 'none';
-}
-}
-function verificarCpf() {
-var cpf=document.getElementById("id_cpf");
-if(cpf.value.length==3 || cpf.value.length==7) {
-    document.getElementById("id_cpf").value=cpf.value+".";
-}
-else if(cpf.value.length==11) {
-document.getElementById("id_cpf").value=cpf.value+"-";
-}
-}
-function verificarTelefoneCelular() {
-var celular=document.getElementById("id_telefoneCelular");
-if(celular.value.length===0) {
-    document.getElementById("id_telefoneCelular").value=celular.value+"(";
-}
-else if(celular.value.length===3) {
-document.getElementById("id_telefoneCelular").value=celular.value+")";
-}
-else if(celular.value.length===9) {
-document.getElementById("id_telefoneCelular").value=celular.value+"-";
-}
-}
-function verificarTelefoneFixo() {
-var fixo=document.getElementById("id_telefoneFixo");
-if(fixo.value.length==0) {
-    document.getElementById("id_telefoneFixo").value=fixo.value+"(";
-}
-else if(fixo.value.length===3) {
-document.getElementById("id_telefoneFixo").value=fixo.value+")";
-}
-else if(fixo.value.length===8) {
-document.getElementById("id_telefoneFixo").value=fixo.value+"-";
-}
-}
-
-</script>
+<script src="scripts.js"></script>
 </body>
 </html>
