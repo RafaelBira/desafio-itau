@@ -8,7 +8,8 @@ dados.push(document.getElementById("id_telefoneCelular"));
 for (var i=0; i<dados.length; i++) {
 if(dados[i].value=="") return;
 }
-alert("Cadastro realizado com sucesso");
+alert("Cadastro realizado com sucesso!");
+//enviar os dados para o servidor
 }
 function verificarSexo() {
 if(document.getElementById("id_sexo").value=="outro") {
